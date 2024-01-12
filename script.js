@@ -53,7 +53,15 @@ function ULADD(obj){
     LI.appendChild(DEL);
     UL.appendChild(LI);
 
-    localStorage.setItem(obj.id, JSON.stringify(obj));
+    axios.post("https://crudcrud.com/api/a2cebbd820d94478a1b94160d6f30a58/expense-tracker-data",obj)
+    .then((response) =>{
+        showNewUserOnScreen(response.data)
+    })
+    .catch((err)=>{
+        //document.body.innerHTML = document.body.innerHTML + "<h4> Something went wrong </h4>"
+        console.log(err)
+    })
+    //localStorage.setItem(obj.id, JSON.stringify(obj));
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
